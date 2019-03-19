@@ -11,7 +11,7 @@
     "starter",
     "boilerplate"
   ],
-  "version": "0.0.2",
+  "version": "0.0.3",
   "homepage": "https://github.com/netlify/netlify-cms-widget-starter",
   "license": "MIT",
   "main": "dist/main.js",
