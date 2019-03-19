@@ -22,7 +22,7 @@ const config = {
             {
               name: 'test_widget',
               label: 'Test Widget',
-              widget: 'test',
+              widget: 'async-select',
               url: 'https://jsonplaceholder.typicode.com/users',
               valueField: 'id',
               displayField: 'name',
@@ -30,7 +30,7 @@ const config = {
             {
               name: 'test_widget_2',
               label: 'Test Widget 2',
-              widget: 'test',
+              widget: 'async-select',
               multiple: true,
               url: 'https://jsonplaceholder.typicode.com/users',
               valueField: 'id',
@@ -76,6 +76,6 @@ const config = {
   ],
 };
 
-CMS.registerWidget('test', Control, Preview);
+CMS.registerWidget('async-select', Control, Preview);
 
 init({ config });

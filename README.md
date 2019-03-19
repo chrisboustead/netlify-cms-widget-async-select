@@ -9,22 +9,22 @@ A simple async select widget for netlify-cms which can populate entries from a v
 As an npm package:
 
 ```shell
-npm install --save netlify-cms-widget-<name>
+npm install --save netlify-cms-widget-async-select
 ```
 
 ```js
-import <name> from 'netlify-cms-widget-<name>'
+import { Control as asyncSelectControl } from 'netlify-cms-widget-async-select'
 
-CMS.registerWidget('<name>', <name>Control, <name>Preview)
+CMS.registerWidget('async-select', asyncSelectControl)
 ```
 
 Via `script` tag:
 
 ```html
-<script src="https://unpkg.com/netlify-cms-widget-<name>@^1.0.0"></script>
+<script src="https://unpkg.com/netlify-cms-widget-async-select@^1.0.0"></script>
 
 <script>
-  CMS.registerWidget('<name>', <name>Control, <name>Preview)
+  CMS.registerWidget('async-select', window.asyncSelectControl, window.asyncSelectPreview)
 </script>
 ```
 
@@ -37,7 +37,7 @@ Add to your Netlify CMS configuration:
       - { 
           name: 'test_widget',
           label: 'Test Widget',
-          widget: 'test',
+          widget: 'async-select',
           url: 'https://jsonplaceholder.typicode.com/users',
           valueField: 'id',
           displayField: 'name',

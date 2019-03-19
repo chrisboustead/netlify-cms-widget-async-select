@@ -1,18 +1,18 @@
 {
-  "name": "netlify-cms-widget-select-async",
+  "name": "netlify-cms-widget-async-select",
   "description": "An async select widget for netlify-cms which can populate entries from a valid endpoint.  Allows for sending custom headers, data/value fields and transformations.",
   "keywords": [
     "netlify",
     "netlify-cms",
     "netlify-cms-widget",
-    "netlify-cms-widget-select-async",
+    "netlify-cms-widget-async-select",
     "cms",
     "widget",
     "starter",
     "boilerplate"
   ],
   "version": "0.0.3",
-  "homepage": "https://github.com/netlify/netlify-cms-widget-starter",
+  "homepage": "https://github.com/chrisboustead/netlify-cms-widget-async-select",
   "license": "MIT",
   "main": "dist/main.js",
   "devDependencies": {

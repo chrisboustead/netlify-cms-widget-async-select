@@ -57,6 +57,7 @@ export default class Control extends React.Component {
     const displayField = field.get('displayField') || valueField;
     const url = field.get('url');
     const method = field.get('method') || 'GET';
+    const dataKey = field.get('dataKey');
     const headers = field.get('headers') || {};
 
     const res = await fetch(url, {
@@ -66,7 +67,14 @@ export default class Control extends React.Component {
       .then(data => data.json())
       .then(json => fromJS(json));
 
-    return res
+    let mappedData = res;
+
+    // Allow for drill down.
+    if (dataKey) {
+      mappedData = res.get(dataKey);
+    }
+
+    return mappedData
       .map(entry => ({
         value: entry.getIn(valueField.split('.')),
         label: entry.getIn(displayField.split('.')),
