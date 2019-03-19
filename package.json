@@ -44,8 +44,8 @@
     "react-select": "^2.4.2",
     "source-map-loader": "^0.2.3",
     "style-loader": "^0.20.3",
-    "webpack": "^4.6.0",
-    "webpack-cli": "^2.0.14",
+    "webpack": "^4.29.6",
+    "webpack-cli": "^3.3.0",
     "webpack-serve": "^0.3.1"
   },
   "dependencies": {
@@ -57,7 +57,7 @@
   "scripts": {
     "start": "webpack-serve --log-level error --open-path '/#/collections/test/entries/test'",
     "demo": "webpack --display errors-only --devtool source-map",
-    "build": "cross-env NODE_ENV=production webpack",
+    "build": "cross-env NODE_ENV=production webpack -p --colors",
     "prepublishOnly": "npm run build",
     "test": "echo 0"
   }
