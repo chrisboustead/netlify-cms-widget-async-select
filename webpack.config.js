@@ -50,8 +50,7 @@ const developmentConfig = {
 const productionConfig = {
   mode: 'production',
   entry: {
-      AsyncSelectControl: ['./src/Control.js'],
-      AsyncSelectPreview: ['./src/Preview.js']
+      index: ['./src/index.js']
   },
   module: {
     rules: [
