@@ -49,6 +49,10 @@ const developmentConfig = {
 
 const productionConfig = {
   mode: 'production',
+  entry: {
+      AsyncSelectControl: ['./src/Control.js'],
+      AsyncSelectPreview: ['./src/Preview.js']
+  },
   module: {
     rules: [
       {
@@ -58,6 +62,15 @@ const productionConfig = {
     ],
   },
   devtool: 'source-map',
+    output: {
+        path: path.resolve(__dirname, 'dist'),
+        filename: '[name].js',
+        library: '[name]',
+        libraryTarget: 'umd',
+        libraryExport: 'default',
+        umdNamedDefine: true,
+        globalObject: 'window',
+    }
 }
 
 module.exports = process.env.NODE_ENV === 'production' ? productionConfig : developmentConfig
