@@ -1,9 +1,9 @@
-import Control from './Control';
-import Preview from './Preview';
+import AsyncSelectControl from './Control';
+import AsyncSelectPreview from './Preview';
 
 if (typeof window !== 'undefined') {
-  window.AsyncSelectControl = Control;
-  window.AsyncSelect = Preview;
+  window.AsyncSelectControl = AsyncSelectControl;
+  window.AsyncSelectPreview = AsyncSelectPreview;
 }
 
-export { Control, Preview };
+export { AsyncSelectControl, AsyncSelectPreview };

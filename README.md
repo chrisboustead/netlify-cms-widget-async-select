@@ -149,4 +149,4 @@ Better documentation coming soon.
 
 ## Support
 
-For help with this widget, open an [issue](https://github.com/chrisboustead/netlify-cms-widget-select-async) or ask the Netlify CMS community in [Gitter](https://gitter.im/netlify/netlifycms).
+For help with this widget, open an [issue](https://github.com/chrisboustead/netlify-cms-widget-async-select) or ask the Netlify CMS community in [Gitter](https://gitter.im/netlify/netlifycms).
