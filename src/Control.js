@@ -5,6 +5,7 @@ import AsyncSelect from 'react-select/lib/Async';
 import { find, isEmpty, last, debounce } from 'lodash';
 import { List, Map, fromJS } from 'immutable';
 import { reactSelectStyles } from 'netlify-cms-ui-default';
+import fuzzy from 'fuzzy';
 
 function optionToString(option) {
   return option && option.value ? option.value : '';
@@ -51,10 +52,11 @@ export default class Control extends React.Component {
     hasActiveStyle: PropTypes.func,
   };
 
-  async getOptions() {
+  async getOptions(term) {
     const { field } = this.props;
     const valueField = field.get('valueField');
     const displayField = field.get('displayField') || valueField;
+    const searchField = field.get('searchField') || displayField;
     const url = field.get('url');
     const method = field.get('method') || 'GET';
     const dataKey = field.get('dataKey');
@@ -74,21 +76,24 @@ export default class Control extends React.Component {
       mappedData = res.get(dataKey);
     }
 
-    return mappedData
-      .map(entry => ({
-        value: entry.getIn(valueField.split('.')),
-        label: entry.getIn(displayField.split('.')),
-        data: entry,
-      }))
-      .toArray();
-  }
+    let mappedOptions = mappedData.map(entry => ({
+      value: entry.getIn(valueField.split('.')),
+      label: entry.getIn(displayField.split('.')),
+      data: entry,
+    }));
 
-  shouldComponentUpdate(nextProps) {
-    return (
-      this.props.value !== nextProps.value ||
-      this.props.hasActiveStyle !== nextProps.hasActiveStyle ||
-      this.props.queryHits !== nextProps.queryHits
-    );
+    if (term) {
+      mappedOptions = fuzzy
+        .filter(term, mappedOptions, {
+          extract: el => el.data.getIn(searchField.split('.')),
+        })
+        .sort((entryA, entryB) => entryB.score - entryA.score)
+        .map(entry => entry.original);
+    } else {
+      mappedOptions = mappedOptions.toArray();
+    }
+
+    return mappedOptions;
   }
 
   componentDidUpdate(prevProps) {
@@ -159,7 +164,7 @@ export default class Control extends React.Component {
   };
 
   loadOptions = debounce((term, callback) => {
-    this.getOptions().then(options => {
+    this.getOptions(term).then(options => {
       if (!this.allOptions && !term) {
         this.allOptions = options;
       }
@@ -169,6 +174,8 @@ export default class Control extends React.Component {
       // graphql endpoint that can paginate for us.
 
       callback(options);
+      // Refresh state to trigger a re-render.
+      this.setState({ ...this.state });
     });
   }, 500);
 

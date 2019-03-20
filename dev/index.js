@@ -35,6 +35,7 @@ const config = {
               url: 'https://jsonplaceholder.typicode.com/users',
               valueField: 'id',
               displayField: 'name',
+              searchField: 'name',
             },
           ],
         },
