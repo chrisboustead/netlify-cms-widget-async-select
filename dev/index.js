@@ -37,6 +37,19 @@ const config = {
               displayField: 'name',
               searchField: 'name',
             },
+            {
+              name: 'test_widget_3',
+              label: 'Test Widget 3',
+              widget: 'async-select',
+              multiple: true,
+              url: 'https://jsonplaceholder.typicode.com/users',
+              valueField: 'id',
+              displayField: 'name',
+              searchField: 'name',
+              filter: function(entry) {
+                return entry.get('id') % 2;
+              },
+            },
           ],
         },
       ],

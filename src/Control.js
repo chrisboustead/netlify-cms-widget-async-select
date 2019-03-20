@@ -57,6 +57,7 @@ export default class Control extends React.Component {
     const valueField = field.get('valueField');
     const displayField = field.get('displayField') || valueField;
     const searchField = field.get('searchField') || displayField;
+    const filterFunction = field.get('filter');
     const url = field.get('url');
     const method = field.get('method') || 'GET';
     const dataKey = field.get('dataKey');
@@ -74,6 +75,10 @@ export default class Control extends React.Component {
     // Allow for drill down.
     if (dataKey) {
       mappedData = res.get(dataKey);
+    }
+
+    if (typeof filterFunction === 'function') {
+      mappedData = mappedData.filter(filterFunction);
     }
 
     let mappedOptions = mappedData.map(entry => ({

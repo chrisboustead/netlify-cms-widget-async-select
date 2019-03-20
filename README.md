@@ -46,7 +46,104 @@ Add to your Netlify CMS configuration:
 
 ## Configuration
 
-You must specify the `valueField` and `url` on the field definition.  Optionally you may pass `headers` object, `method` string and `body` data for the request.
+Async-select widgets may have the following properties in addition to the defaults used by netlity.
+
+---
+
+`url` - string - **required**
+
+The URI of the endpoint which to request data to populate the select options.
+
+---
+
+`valueField` - string - **required**
+
+Field in the data response which will be mapped to the value of the netlify widget once populated.
+
+---
+
+`displayField` - string - **optional** 
+
+default: `valueField`
+
+Field in the data response which will be mapped to the display text of the netlify widget once populated.
+
+---
+
+`dataKey` - string - **optional** 
+
+default: `valueField`
+
+Field in the data response which will be used for the source of the data.  
+
+For example, given the below data structure, you may set `dataKey: 'data'` to populate the select dropdown as expected.
+
+Example:
+```javascript
+{
+    meta: {
+        page: 1,
+        total: 10
+        ...
+    }
+    data: [{
+        id: 1,
+        name: 'user 1',
+        email: 'foo@bar.com'
+    },{
+        ...
+    }]
+}
+``` 
+
+---
+
+`headers` - object - **optional** 
+
+default: `{}`
+
+Key-value object of HTTP headers to pass to the endpoint.
+
+Example:
+```javascript
+{
+  'Content-Type': 'application/json',
+  ...
+}
+```
+---
+
+`method` - string - **optional** 
+
+default: `GET`
+
+HTTP request method to use when making call to endpoint.
+
+---
+
+`body` - **optional** 
+
+default: `undefined`
+
+Body to send in request to endpoint.
+
+---
+
+`filter` - function - **optional** 
+
+default: `undefined`
+
+Function which receives parameter `entry` (Immutable.js Map) which is run on each item returned from endpoint.  Similar to `Array.prototype.filter` this will reject anything which does not return truthy.
+
+Example: 
+
+```javascript
+filter: (entry) => {
+  return entry.get('id') % 2;
+}
+```
+
+---
 
 Better documentation coming soon.
 
