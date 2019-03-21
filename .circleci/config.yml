@@ -34,6 +34,14 @@ jobs:
     - persist_to_workspace:
         root: ~/repo
         paths: .
+  release:
+    <<: *defaults
+    steps:
+    - attach_workspace:
+        at: ~/repo
+    - run:
+        name: Create release
+        command: npm run release
   deploy:
     <<: *defaults
     steps:
@@ -52,11 +60,17 @@ workflows:
     jobs:
     - test:
         filters:
+          branches:
+            only: /^master$/
           tags:
             only: /^v.*/
-    - deploy:
+    - release:
         requires:
         - test
+        filters:
+          branches:
+            only: /^master$/
+    - deploy:
         filters:
           tags:
             only: /^v.*/

@@ -43,6 +43,7 @@
     "react": "^16.3.2",
     "react-immutable-proptypes": "^2.1.0",
     "react-select": "^2.4.2",
+    "semantic-release": "^15.13.3",
     "source-map-loader": "^0.2.3",
     "style-loader": "^0.20.3",
     "webpack": "^4.29.6",
@@ -60,6 +61,7 @@
     "demo": "webpack --display errors-only --devtool source-map",
     "build": "cross-env NODE_ENV=production webpack -p --colors",
     "prepublishOnly": "npm run build",
+    "release": "semantic-release",
     "test": "echo 0"
   }
 }
