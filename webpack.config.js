@@ -61,15 +61,13 @@ const productionConfig = {
     ],
   },
   devtool: 'source-map',
-    output: {
-        path: path.resolve(__dirname, 'dist'),
-        filename: '[name].js',
-        library: '[name]',
-        libraryTarget: 'umd',
-        libraryExport: 'default',
-        umdNamedDefine: true,
-        globalObject: 'window',
-    }
+  output: {
+      path: path.resolve(__dirname, 'dist'),
+      filename: '[name].js',
+      library: 'AsyncSelectWidget',
+      libraryTarget: 'umd',
+      libraryExport: 'default',
+  }
 }
 
 module.exports = process.env.NODE_ENV === 'production' ? productionConfig : developmentConfig
