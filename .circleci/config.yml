@@ -40,6 +40,9 @@ jobs:
     - attach_workspace:
         at: ~/repo
     - run:
+        name: Disable github auth check
+        command: mkdir ~/.ssh/ && echo -e "Host github.com\n\tStrictHostKeyChecking no\n" > ~/.ssh/config
+    - run:
         name: Create release
         command: npm run release
   deploy:
