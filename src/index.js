@@ -6,4 +6,9 @@ if (typeof window !== 'undefined') {
   window.AsyncSelectPreview = AsyncSelectPreview;
 }
 
-export { AsyncSelectControl, AsyncSelectPreview };
+const exportObject = {
+  AsyncSelectControl,
+  AsyncSelectPreview
+};
+
+export default exportObject
