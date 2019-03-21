@@ -15,7 +15,6 @@
   "homepage": "https://github.com/chrisboustead/netlify-cms-widget-async-select",
   "license": "MIT",
   "main": "dist/index.js",
-  "module": "src/index.js",
   "devDependencies": {
     "@babel/core": "^7.0.0",
     "@babel/plugin-proposal-class-properties": "^7.0.0",
