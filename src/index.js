@@ -8,7 +8,7 @@ if (typeof window !== 'undefined') {
 
 const exportObject = {
   AsyncSelectControl,
-  AsyncSelectPreview
+  AsyncSelectPreview,
 };
 
-export default exportObject
+export default exportObject;

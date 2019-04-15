@@ -1,7 +1,7 @@
 import './bootstrap.js';
 import CMS, { init } from 'netlify-cms';
 import 'netlify-cms/dist/cms.css';
-import { AsyncSelectControl, AsyncSelectPreview } from '../src';
+import AsyncSelectWidget from '../src';
 
 const config = {
   backend: {
@@ -90,6 +90,10 @@ const config = {
   ],
 };
 
-CMS.registerWidget('async-select', AsyncSelectControl, AsyncSelectPreview);
+CMS.registerWidget(
+  'async-select',
+  AsyncSelectWidget.AsyncSelectControl,
+  AsyncSelectWidget.AsyncSelectPreview
+);
 
 init({ config });
