@@ -24,7 +24,7 @@ Via `script` tag:
 <script src="https://unpkg.com/netlify-cms-widget-async-select@^1.0.0"></script>
 
 <script>
-  CMS.registerWidget('async-select', window.asyncSelectControl, window.asyncSelectPreview)
+  CMS.registerWidget('async-select', window.AsyncSelectControl, window.AsyncSelectPreview)
 </script>
 ```
 
